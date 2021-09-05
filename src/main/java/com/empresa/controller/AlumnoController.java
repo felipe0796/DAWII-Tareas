@@ -102,7 +102,6 @@ public class AlumnoController {
 
 
 	@GetMapping("/dni/{paramDni}")
-
 	@ResponseBody
 
 	public ResponseEntity<List<Alumno>> listaAlumnoPorDni(@PathVariable("paramDni")String dni){
