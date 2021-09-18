@@ -1,13 +1,13 @@
-package com.empresa;
+package com.marketplace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Sesion01InicioApplication {
+public class ProyectoIntegradorBackEnd {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Sesion01InicioApplication.class, args);
+		SpringApplication.run(ProyectoIntegradorBackEnd.class, args);
 	}
 
 }
