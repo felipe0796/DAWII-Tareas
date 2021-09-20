@@ -1,10 +1,16 @@
 package com.marketplace.controller;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,6 +49,68 @@ public class ProductoController {
 		return ResponseEntity.ok(objSalida);
 	}
 
-	//Sesion01InicioApplication
+	
+	
+	@GetMapping("/id/{idProd}")
+	@ResponseBody
+	public ResponseEntity<Producto> listarProductoPorID(@PathVariable("idProd") int idProducto){
+		
+		Optional<Producto> optProd = service.buscarProductoPorId(idProducto);
+		
+		if(optProd.isPresent()) {
+		return ResponseEntity.ok(optProd.get());	
+			
+		} else {
+			return ResponseEntity.badRequest().build();
+		}
+		
+	}
+	
+	
+	
+	@PutMapping
+	@ResponseBody
+	public ResponseEntity<Producto> editarProducto(@RequestBody Producto obj){
+		
+		if(obj == null) {
+			return ResponseEntity.badRequest().build();
+		} else {
+		Optional<Producto> optProducto = service.buscarProductoPorId(obj.getId_producto());			
+		
+				if(optProducto.isPresent()) {
+					Producto objModificado = service.insertarProducto(obj);
+					return ResponseEntity.ok(objModificado);
+				} else {
+					return ResponseEntity.badRequest().build();
+				}
+			
+			}
+		
+		}
+	
+	@DeleteMapping("/{idProd}")
+	@ResponseBody
+	public ResponseEntity<Producto> eliminaAlumno(@PathVariable("idProd") int idProducto){
+		
+		Optional<Producto> optPro = service.buscarProductoPorId(idProducto);
+		
+			if(optPro.isPresent()) {
+				
+					service.eliminarProducto(idProducto);
+					Optional<Producto> optEliminado = service.buscarProductoPorId(idProducto);
+					
+					if(optEliminado.isPresent()) {
+						
+						return ResponseEntity.badRequest().build();
+					} else {
+						return ResponseEntity.ok(optPro.get());
+					}
+					
+				} else {
+				return ResponseEntity.badRequest().build();
+			}
+	   }	
+	
+	
 	
 }
