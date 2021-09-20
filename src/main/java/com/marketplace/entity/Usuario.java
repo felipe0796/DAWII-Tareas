@@ -24,17 +24,13 @@ public class Usuario {
 	private String telefono;
 	private String telef_alter;
 	private String direccion;
-	@ManyToOne
-	@JoinColumn(name = "id_departamento")
-	private Departamento departamento;
-	@ManyToOne
-	@JoinColumn(name = "id_provincia")
-	private Provincia provincia;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_distrito")
 	private Distrito distrito; 
-	@Lob
-	private byte[] foto;
+	
+	private String foto;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
@@ -93,28 +89,17 @@ public class Usuario {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public Departamento getDepartamento() {
-		return departamento;
-	}
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
-	}
-	public Provincia getProvincia() {
-		return provincia;
-	}
-	public void setProvincia(Provincia provincia) {
-		this.provincia = provincia;
-	}
+	
 	public Distrito getDistrito() {
 		return distrito;
 	}
 	public void setDistrito(Distrito distrito) {
 		this.distrito = distrito;
 	}
-	public byte[] getFoto() {
+	public String getFoto() {
 		return foto;
 	}
-	public void setFoto(byte[] foto) {
+	public void setFoto(String foto) {
 		this.foto = foto;
 	}
 	public Estado getEstado() {
