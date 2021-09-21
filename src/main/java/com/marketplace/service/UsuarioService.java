@@ -7,6 +7,6 @@ import com.marketplace.entity.Usuario;
 public interface UsuarioService {
 	
 	public abstract List<Usuario> listarUsuario();
-	public abstract Usuario registrarUsuario(Usuario obj);
+	public abstract Usuario insertaActualizaUsuario(Usuario obj);
 
 }

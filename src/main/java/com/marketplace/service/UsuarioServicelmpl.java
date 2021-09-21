@@ -18,7 +18,7 @@ public class UsuarioServicelmpl implements UsuarioService {
 	}
 
 	@Override
-	public Usuario registrarUsuario(Usuario obj) {
+	public Usuario insertaActualizaUsuario(Usuario obj) {
 		return repository.save(obj);
 	}
 
