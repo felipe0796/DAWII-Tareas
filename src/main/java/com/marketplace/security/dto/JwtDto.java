@@ -8,17 +8,13 @@ public class JwtDto {
 	
 	private String token;
 	private String bearer = "Bearer";
-	private String correo;
+	private String email;
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	
-
-	
-
-	public JwtDto(String token, String correo, Collection<? extends GrantedAuthority> authorities) {
+	public JwtDto(String token, String email, Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.token = token;
-		this.correo = correo;
+		this.email = email;
 		this.authorities = authorities;
 	}
 
@@ -38,14 +34,13 @@ public class JwtDto {
 		this.bearer = bearer;
 	}
 
-	public String getCorreo() {
-		return correo;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
 
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return authorities;

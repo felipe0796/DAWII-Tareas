@@ -25,6 +25,7 @@ import com.marketplace.entity.RolNombre;
 import com.marketplace.entity.Usuario;
 import com.marketplace.security.dto.JwtDto;
 import com.marketplace.security.dto.LoginUsuario;
+import com.marketplace.security.dto.Mensaje;
 import com.marketplace.security.dto.NuevoUsuario;
 import com.marketplace.security.jwt.JwtProvider;
 import com.marketplace.service.RolService;
@@ -55,14 +56,14 @@ public class AuthController {
 	public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
 		if(bindingResult.hasErrors())
 			return new ResponseEntity(Constantes.MENSAJE_REG_ERROR_DATOS, HttpStatus.BAD_REQUEST);
-		if(usuarioService.existsByUsuario(nuevoUsuario.getUsuario()))
-			return new ResponseEntity(Constantes.MENSAJE_REG_YA_EXISTE_USER, HttpStatus.BAD_REQUEST);
+		/*if(usuarioService.existsByUsuario(nuevoUsuario.getUsuario()))
+			return new ResponseEntity(Constantes.MENSAJE_REG_YA_EXISTE_USER, HttpStatus.BAD_REQUEST);*/
 		if(usuarioService.existsByCorreo(nuevoUsuario.getCorreo()))
 			return new ResponseEntity(Constantes.MENSAJE_REG_YA_EXISTE_EMAIL, HttpStatus.BAD_REQUEST);
 		
 		Usuario usuario = new Usuario(nuevoUsuario.getNombre_completo(), nuevoUsuario.getDni(), nuevoUsuario.getCorreo(),
 										passwordEncoder.encode(nuevoUsuario.getClave()),
-										nuevoUsuario.getUsuario(), nuevoUsuario.getTelefono()); 
+										 nuevoUsuario.getTelefono()); 
 		Set<Rol> roles = new HashSet<>();
 		roles.add(rolService.getByRolNombre(RolNombre.ROLE_USER).get());
 		if(nuevoUsuario.getRoles().contains("admin"))
@@ -75,9 +76,9 @@ public class AuthController {
 	@PostMapping("/login")
 	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
 		if (bindingResult.hasErrors()) 
-			return new ResponseEntity(Constantes.MENSAJE_ACT_ERROR_LOGIN, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity(new Mensaje("campos mal puestos"), HttpStatus.BAD_REQUEST);
 		Authentication authentication = 
-				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getCorreo(), loginUsuario.getClave()));
+				authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getEmail(), loginUsuario.getPassword()));
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtProvider.generateToken(authentication);
