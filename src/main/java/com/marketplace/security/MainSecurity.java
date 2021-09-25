@@ -50,10 +50,16 @@ public class MainSecurity  extends WebSecurityConfigurerAdapter{
 	protected AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
 	}
+	
+	//.anyRequest().authenticated().. TENER EN CUENTA HACER LUEGO LA MODIFICACION DE PARA QUE EL 
+	//USUARIO PUEDA VER LOS DEMÁS SITOS DE LA WEB
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()
 						.authorizeRequests().antMatchers("/auth/**").permitAll()
+						.and()
+						.authorizeRequests().antMatchers("/rest/**").permitAll()
 						.anyRequest().authenticated()
 						.and()
 						.exceptionHandling().authenticationEntryPoint(jwtEntryPoint)
