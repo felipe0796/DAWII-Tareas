@@ -14,7 +14,6 @@ public class Talla {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_talla;
 	private String descripcion;
-	private String tipo;
 	
 	public int getId_talla() {
 		return id_talla;
@@ -28,11 +27,6 @@ public class Talla {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+
 	
 }

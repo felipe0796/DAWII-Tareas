@@ -5,13 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -26,8 +27,8 @@ public class Producto {
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 	@ManyToOne
-	@JoinColumn(name = "id_categoria")
-	private Categoria categoria;
+	@JoinColumn(name = "id_subcategoria")
+	private SubCategoria subcategoria;
 	
 	private String numero_contacto;
 	
@@ -45,18 +46,8 @@ public class Producto {
 	@JoinColumn(name = "id_distrito")
 	private Distrito distrito;
 
-	private String foto_1;
-
-	private String foto_2;
-
-	private String foto_3;
-
-	private String foto_4;
 	
-	@ManyToOne
-	@JoinColumn(name = "id_entrega")
-	private Entrega entrega;
-	
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone="America/Lima" )
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date fecha_publicacion;
@@ -65,6 +56,24 @@ public class Producto {
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
 
+	
+	private double precio1; 
+	private String descripcion1; 
+	private double precio2; 
+	private String descripcion2; 
+	private double precio3; 
+	private String descripcion3; 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public int getId_producto() {
 		return id_producto;
 	}
@@ -81,12 +90,14 @@ public class Producto {
 		this.usuario = usuario;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	
+
+	public SubCategoria getSubcategoria() {
+		return subcategoria;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setSubcategoria(SubCategoria subcategoria) {
+		this.subcategoria = subcategoria;
 	}
 
 	public String getNumero_contacto() {
@@ -145,45 +156,7 @@ public class Producto {
 		this.distrito = distrito;
 	}
 
-	public String getFoto_1() {
-		return foto_1;
-	}
 
-	public void setFoto_1(String foto_1) {
-		this.foto_1 = foto_1;
-	}
-
-	public String getFoto_2() {
-		return foto_2;
-	}
-
-	public void setFoto_2(String foto_2) {
-		this.foto_2 = foto_2;
-	}
-
-	public String getFoto_3() {
-		return foto_3;
-	}
-
-	public void setFoto_3(String foto_3) {
-		this.foto_3 = foto_3;
-	}
-
-	public String getFoto_4() {
-		return foto_4;
-	}
-
-	public void setFoto_4(String foto_4) {
-		this.foto_4 = foto_4;
-	}
-
-	public Entrega getEntrega() {
-		return entrega;
-	}
-
-	public void setEntrega(Entrega entrega) {
-		this.entrega = entrega;
-	}
 
 	public Date getFecha_publicacion() {
 		return fecha_publicacion;
@@ -199,6 +172,54 @@ public class Producto {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public double getPrecio1() {
+		return precio1;
+	}
+
+	public void setPrecio1(double precio1) {
+		this.precio1 = precio1;
+	}
+
+	public String getDescripcion1() {
+		return descripcion1;
+	}
+
+	public void setDescripcion1(String descripcion1) {
+		this.descripcion1 = descripcion1;
+	}
+
+	public double getPrecio2() {
+		return precio2;
+	}
+
+	public void setPrecio2(double precio2) {
+		this.precio2 = precio2;
+	}
+
+	public String getDescripcion2() {
+		return descripcion2;
+	}
+
+	public void setDescripcion2(String descripcion2) {
+		this.descripcion2 = descripcion2;
+	}
+
+	public double getPrecio3() {
+		return precio3;
+	}
+
+	public void setPrecio3(double precio3) {
+		this.precio3 = precio3;
+	}
+
+	public String getDescripcion3() {
+		return descripcion3;
+	}
+
+	public void setDescripcion3(String descripcion3) {
+		this.descripcion3 = descripcion3;
 	}
 	
 	

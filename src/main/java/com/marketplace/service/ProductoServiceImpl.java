@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.marketplace.entity.Producto;
 import com.marketplace.repository.ProductoRepository;
@@ -39,6 +40,11 @@ public class ProductoServiceImpl implements ProductoService{
 		
 		repository.deleteById(idProd);
 		
+	}
+
+	@Override
+	public int retornarCodigo() {
+		return repository.retornarCodigo();
 	}
 
 }
