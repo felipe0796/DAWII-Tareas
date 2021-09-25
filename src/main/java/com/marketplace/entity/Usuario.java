@@ -1,11 +1,18 @@
 package com.marketplace.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -20,10 +27,15 @@ public class Usuario {
 	private String dni;
 	private String correo; 
 	private String clave;
+	@Column(unique = true)
 	private String usuario;
 	private String telefono;
 	private String telef_alter;
 	private String direccion;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_usuario_rol", joinColumns = @JoinColumn(name = "id_usuario"),
+	inverseJoinColumns = @JoinColumn(name = "id_rol"))
+	private Set<Rol> roles = new HashSet<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "id_distrito")
@@ -108,5 +120,27 @@ public class Usuario {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
+	public Set<Rol> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Rol> roles) {
+		this.roles = roles;
+	}
+	public Usuario() {
+		
+	}
+	public Usuario(String nombre_completo, String dni, String correo, String clave, String usuario, String telefono) {
+		super();
+		this.nombre_completo = nombre_completo;
+		this.dni = dni;
+		this.correo = correo;
+		this.clave = clave;
+		this.usuario = usuario;
+		this.telefono = telefono;
+	}
+	
+	
+	
+	
 	
 }
