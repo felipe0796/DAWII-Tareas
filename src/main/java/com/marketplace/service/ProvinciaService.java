@@ -10,5 +10,7 @@ public interface ProvinciaService {
 	public abstract List<Provincia> listaProvincia();
 	
 	List<Provincia> listarProvinciasByIDDepartamento(Integer idDepartamento);
+	
+	public abstract List<Provincia> listaProvinciaAsc();
 
 }

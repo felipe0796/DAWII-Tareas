@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import com.marketplace.service.DistritoService;
 
 @RestController
 @RequestMapping("/rest/distrito")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class DistritoController {
 
 	@Autowired
@@ -40,19 +42,13 @@ public class DistritoController {
 		return ResponseEntity.ok(service.listarDistritosByIDProvincia(id));
 	}
 	
-	/*
-	public List<Distrito> listar(){
-		List<Distrito> lista;
-		final String JDBC_DRIVER= "org.postgresql.Driver";
-		final String DB_URL = "jdbc:postgresql://localhost:8080/lista";
-		
-		
-		try (Connection conexion = DriverManager.getConnection(DB_URL,User, PASS)){
-			Class.forName(JDBC_DRIVER);
-		}
-		
+	@GetMapping ("/asc")
+	@ResponseBody
+	public ResponseEntity<List<Distrito>> listaDistritoAsc(){
+		List<Distrito> lista = service.listaDistritoAsc();
+		return ResponseEntity.ok(lista);
 	}
-	*/
+	
 	//Sesion01InicioApplication
 	
 }

@@ -14,4 +14,6 @@ public interface DistritoRepository extends JpaRepository<Distrito, Integer>{
 	*/
 	@Query("select d from Distrito d where d.provincia.id_provincia = ?1")
 	List<Distrito> listarDistritosByIDProvincia(Integer idProvincia);
+	
+	public List<Distrito> findByOrderByDescripcionAsc ();
 }

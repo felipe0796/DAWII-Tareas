@@ -25,4 +25,9 @@ public class ProvinciaServiceImpl implements ProvinciaService{
 		return repository.listarProvinciasByIDDepartamento(idDepartamento);
 	}
 
+	@Override
+	public List<Provincia> listaProvinciaAsc() {
+		return repository.findByOrderByDescripcionAsc();
+	}
+
 }
