@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marketplace.entity.Talla;
+import com.marketplace.entity.TallaSubcategoria;
 import com.marketplace.repository.TallaRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class TallaServiceImpl implements TallaService{
 	private TallaRepository repository;	
 	
 	@Override
-	public List<Talla> listaTalla() {
-		return repository.findAll();
+	public List<TallaSubcategoria> listaTallabyIDSubcategoria(Integer idSubcategoria) {
+		return repository.listarTallabyIDSubcategoria(idSubcategoria);
 	}
 
 }

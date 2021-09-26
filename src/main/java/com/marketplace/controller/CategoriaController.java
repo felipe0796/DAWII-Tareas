@@ -17,6 +17,7 @@ import com.marketplace.service.DistritoService;
 @RestController
 @RequestMapping("/rest/categoria")
 @CrossOrigin(origins = "http://localhost:4200/")
+
 public class CategoriaController {
 
 	@Autowired

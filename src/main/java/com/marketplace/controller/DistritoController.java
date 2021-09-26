@@ -19,6 +19,7 @@ import com.marketplace.service.DistritoService;
 @RestController
 @RequestMapping("/rest/distrito")
 @CrossOrigin(origins = "http://localhost:4200/")
+
 public class DistritoController {
 
 	@Autowired

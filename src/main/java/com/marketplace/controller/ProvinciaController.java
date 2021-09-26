@@ -15,7 +15,9 @@ import com.marketplace.service.ProvinciaService;
 
 @RestController
 @RequestMapping("/rest/provincia")
+
 @CrossOrigin(origins = "http://localhost:4200/")
+
 public class ProvinciaController {
 
 	@Autowired

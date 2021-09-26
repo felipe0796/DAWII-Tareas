@@ -14,7 +14,9 @@ import com.marketplace.service.DepartamentoService;
 
 @RestController
 @RequestMapping("/rest/departamento")
+
 @CrossOrigin(origins = "http://localhost:4200/")
+
 public class DepartamentoController {
 
 	@Autowired

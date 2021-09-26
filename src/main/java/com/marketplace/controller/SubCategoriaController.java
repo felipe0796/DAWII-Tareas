@@ -18,7 +18,9 @@ import com.marketplace.service.SubCategoriaService;
 
 @RestController
 @RequestMapping("/rest/subcategoria")
+
 @CrossOrigin(origins = "http://localhost:4200/")
+
 public class SubCategoriaController {
 	
 	@Autowired
@@ -33,6 +35,7 @@ public class SubCategoriaController {
 	}
 	*/
 	@GetMapping("/idCat/{id}")
+	@ResponseBody
 	public ResponseEntity<List<SubCategoria>> listarSubCategoriaByIDCat(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(service.listarSubCategoriaByIDCategoria(id));
 	}
