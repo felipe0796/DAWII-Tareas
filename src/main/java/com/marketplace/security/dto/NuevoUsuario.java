@@ -10,11 +10,12 @@ public class NuevoUsuario {
 	@NotBlank
 	private String nombre_completo;
 	@Email
+	@NotBlank
 	private String correo;
 	@NotBlank
 	private String clave;
-	@NotBlank
-	private String usuario;
+	//@NotBlank
+	//private String usuario;
 	@NotBlank
 	private String dni;
 	@NotBlank
@@ -40,12 +41,14 @@ public class NuevoUsuario {
 	public void setClave(String clave) {
 		this.clave = clave;
 	}
+	/*
 	public String getUsuario() {
 		return usuario;
 	}
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+	*/
 	public String getDni() {
 		return dni;
 	}

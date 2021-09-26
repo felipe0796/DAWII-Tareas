@@ -130,13 +130,12 @@ public class Usuario {
 	public Usuario() {
 		
 	}
-	public Usuario(String nombre_completo, String dni, String correo, String clave, String usuario, String telefono) {
+	public Usuario(String nombre_completo, String dni, String correo, String clave, String telefono) {
 		super();
 		this.nombre_completo = nombre_completo;
 		this.dni = dni;
 		this.correo = correo;
 		this.clave = clave;
-		this.usuario = usuario;
 		this.telefono = telefono;
 	}
 	
