@@ -19,4 +19,9 @@ public class DepartamentoServiceImpl implements DepartamentoService{
 		return repository.findAll();
 	}
 
+	@Override
+	public List<Departamento> listaDepartamentoAsc() {
+		return repository.findByOrderByDescripcionAsc();
+	}
+
 }

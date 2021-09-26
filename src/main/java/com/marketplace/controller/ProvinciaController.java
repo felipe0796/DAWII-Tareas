@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.marketplace.entity.Provincia;
 import com.marketplace.service.ProvinciaService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/rest/provincia")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ProvinciaController {
 
 	@Autowired
@@ -28,10 +28,17 @@ public class ProvinciaController {
 		return ResponseEntity.ok(lista);
 	}
 	
-	
 	@GetMapping("/{id}")
+	@ResponseBody
 	public ResponseEntity<List<Provincia>> listaProvinciaByIDDep(@PathVariable("id") Integer id){
 		return ResponseEntity.ok(service.listarProvinciasByIDDepartamento(id));
+	}
+	
+	@GetMapping ("/asc")
+	@ResponseBody
+	public ResponseEntity<List<Provincia>> listaProvinciaAsc(){
+		List<Provincia> lista = service.listaProvinciaAsc();
+		return ResponseEntity.ok(lista);
 	}
 	
 	//Sesion01InicioApplication

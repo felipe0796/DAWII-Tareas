@@ -25,6 +25,7 @@ public class Usuario {
 	private int id_usuario;  
 	private String nombre_completo;
 	private String dni;
+	@Column(unique = true)
 	private String correo; 
 	private String clave;
 	@Column(unique = true)

@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.marketplace.entity.Distrito;
 import com.marketplace.service.DistritoService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/rest/distrito")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class DistritoController {
 
 	@Autowired
@@ -37,19 +37,13 @@ public class DistritoController {
 		return ResponseEntity.ok(service.listarDistritosByIDProvincia(id));
 	}
 	
-	/*
-	public List<Distrito> listar(){
-		List<Distrito> lista;
-		final String JDBC_DRIVER= "org.postgresql.Driver";
-		final String DB_URL = "jdbc:postgresql://localhost:8080/lista";
-		
-		
-		try (Connection conexion = DriverManager.getConnection(DB_URL,User, PASS)){
-			Class.forName(JDBC_DRIVER);
-		}
-		
+	@GetMapping ("/asc")
+	@ResponseBody
+	public ResponseEntity<List<Distrito>> listaDistritoAsc(){
+		List<Distrito> lista = service.listaDistritoAsc();
+		return ResponseEntity.ok(lista);
 	}
-	*/
+	
 	//Sesion01InicioApplication
 	
 }

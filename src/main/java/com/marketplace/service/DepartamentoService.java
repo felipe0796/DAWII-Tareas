@@ -7,5 +7,6 @@ import com.marketplace.entity.Departamento;
 public interface DepartamentoService {
 	
 	public abstract List<Departamento> listaDepartamento();
-
+	public abstract List<Departamento> listaDepartamentoAsc();
+	
 }

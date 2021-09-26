@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.marketplace.entity.Departamento;
 import com.marketplace.service.DepartamentoService;
 
-@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/rest/departamento")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class DepartamentoController {
 
 	@Autowired
@@ -27,6 +27,12 @@ public class DepartamentoController {
 		return ResponseEntity.ok(lista);
 	}
 	
+	@GetMapping ("/asc")
+	@ResponseBody
+	public ResponseEntity<List<Departamento>> listaDepartamentoDesc(){
+		List<Departamento> lista = service.listaDepartamentoAsc();
+		return ResponseEntity.ok(lista);
+	}
 	//Sesion01InicioApplication
 	
 }

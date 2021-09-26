@@ -24,4 +24,9 @@ public class DistritoServiceImpl implements DistritoService{
 		return repository.listarDistritosByIDProvincia(idProvincia);
 	}
 
+	@Override
+	public List<Distrito> listaDistritoAsc() {
+		return repository.findByOrderByDescripcionAsc();
+	}
+
 }

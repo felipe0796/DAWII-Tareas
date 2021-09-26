@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.marketplace.entity.Rol;
@@ -52,6 +53,7 @@ public class AuthController {
 	JwtProvider jwtProvider;
 	
 	@PostMapping("/nuevo")
+	@ResponseBody
 	public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
 		if(bindingResult.hasErrors())
 			return new ResponseEntity(Constantes.MENSAJE_REG_ERROR_DATOS, HttpStatus.BAD_REQUEST);
@@ -73,6 +75,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/login")
+	@ResponseBody
 	public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
 		if (bindingResult.hasErrors()) 
 			return new ResponseEntity(Constantes.MENSAJE_ACT_ERROR_LOGIN, HttpStatus.BAD_REQUEST);

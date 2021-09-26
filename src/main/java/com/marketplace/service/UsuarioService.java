@@ -14,6 +14,7 @@ import com.marketplace.repository.UsuarioRepository;
 @Transactional
 public class UsuarioService {
 	
+
 	@Autowired
 	private UsuarioRepository repository;
 
@@ -46,4 +47,6 @@ public class UsuarioService {
 	public boolean existsByCorreo(String correo) {
 		return repository.existsByCorreo(correo);
 	}
+
+	
 }
