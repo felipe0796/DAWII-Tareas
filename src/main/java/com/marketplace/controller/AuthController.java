@@ -1,9 +1,9 @@
 package com.marketplace.controller;
 import java.util.HashSet;
-
+import java.util.Optional;
 import java.util.Set;
 import javax.validation.Valid;
-
+import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ import com.marketplace.service.RolService;
 import com.marketplace.service.UsuarioService;
 import com.marketplace.util.Constantes;
 
-@CrossOrigin(origins = "http://localhost:4200/")
+//@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -86,7 +86,8 @@ public class AuthController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtProvider.generateToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+		Optional<Usuario> usu= usuarioService.getByCorreo(loginUsuario.getEmail());
+		JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities(), usu.get());
 		return new ResponseEntity(jwtDto, HttpStatus.OK);
 				
 	}

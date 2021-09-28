@@ -1,5 +1,6 @@
 package com.marketplace.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,6 +16,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -42,11 +47,20 @@ public class Usuario {
 	@JoinColumn(name = "id_distrito")
 	private Distrito distrito; 
 	
-	private String foto;
+	@Lob
+	private byte[] foto;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
 	private Estado estado;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone="America/Lima")
+	@Temporal(TemporalType.DATE)
+	private Date fecha_registro;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone="America/Lima")
+	@Temporal(TemporalType.DATE)
+	private Date fecha_actualizacion;
 	
 	public int getId_usuario() {
 		return id_usuario;
@@ -109,10 +123,10 @@ public class Usuario {
 	public void setDistrito(Distrito distrito) {
 		this.distrito = distrito;
 	}
-	public String getFoto() {
+	public byte[] getFoto() {
 		return foto;
 	}
-	public void setFoto(String foto) {
+	public void setFoto(byte[] foto) {
 		this.foto = foto;
 	}
 	public Estado getEstado() {
@@ -137,6 +151,19 @@ public class Usuario {
 		this.correo = correo;
 		this.clave = clave;
 		this.telefono = telefono;
+	}
+	
+	public Date getFecha_registro() {
+		return fecha_registro;
+	}
+	public void setFecha_registro(Date fecha_registro) {
+		this.fecha_registro = fecha_registro;
+	}
+	public Date getFecha_actualizacion() {
+		return fecha_actualizacion;
+	}
+	public void setFecha_actualizacion(Date fecha_actualizacion) {
+		this.fecha_actualizacion = fecha_actualizacion;
 	}
 	
 	

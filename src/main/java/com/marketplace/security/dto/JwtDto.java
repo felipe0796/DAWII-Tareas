@@ -4,18 +4,23 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.marketplace.entity.Usuario;
+
 public class JwtDto {
 	
 	private String token;
 	private String bearer = "Bearer";
 	private String email;
+	private Usuario usuario;
+
 	private Collection<? extends GrantedAuthority> authorities;
 	
-	public JwtDto(String token, String email, Collection<? extends GrantedAuthority> authorities) {
+	public JwtDto(String token, String email, Collection<? extends GrantedAuthority> authorities, Usuario usuario) {
 		super();
 		this.token = token;
 		this.email = email;
 		this.authorities = authorities;
+		this.usuario = usuario;
 	}
 
 	public String getToken() {
@@ -49,7 +54,14 @@ public class JwtDto {
 	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
 		this.authorities = authorities;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 	
 

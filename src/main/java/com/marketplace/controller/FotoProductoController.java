@@ -81,7 +81,7 @@ public class FotoProductoController {
 	        
 	         
 	         Producto producto= new Producto();
-	         int codigo = servicePro.retornarCodigo()+1;
+	         int codigo = servicePro.retornarCodigo();
 	         producto.setId_producto(codigo);
 	         foto.setProducto(producto);
 	        
